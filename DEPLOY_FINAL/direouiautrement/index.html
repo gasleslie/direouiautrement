@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dire Oui Autrement — Votre cérémonie, vos mots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Marcellus&family=Manrope:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm-white: #FAF9F7;
+  --cream: #F5F1EB;
+  --paper: #F1ECE3;
+  --taupe: #D2C4B5;
+  --taupe-deep: #A8957F;
+  --blush: #EBD5D0;
+  --rose: #C8A7A1;
+  --coral: #D6A49A;
+  --stone: #BFBAB2;
+  --ink: #2B241D;
+  --ink-soft: #5C5045;
+  --ink-mute: #8A7E72;
+  --line: #E5DDD1;
+  --line-soft: #EFE9DE;
+  --font-display: "Cormorant Garamond", "Garamond", serif;
+  --font-script: "Italiana", "Cormorant Garamond", serif;
+  --font-body: "Manrope", "Helvetica Neue", system-ui, sans-serif;
+  --r-sm: 4px; --r-md: 8px; --r-lg: 14px;
+  --shadow-paper: 0 1px 2px rgba(43,36,29,0.04), 0 24px 60px -28px rgba(43,36,29,0.18);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:inherit;}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.11  0 0 0 0.025 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:0.55;}
+
+/* Cover */
+.cover{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:64px 32px;z-index:1;}
+.cover-card{position:relative;max-width:880px;width:100%;background:var(--warm-white);box-shadow:var(--shadow-paper);border:1px solid var(--line-soft);padding:88px 96px 80px;text-align:center;}
+.cover-card::before{content:"";position:absolute;inset:14px;border:1px solid var(--taupe);opacity:0.4;pointer-events:none;}
+.cover-eyebrow{font-family:var(--font-body);font-size:11px;letter-spacing:0.42em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 36px;}
+.cover-title{font-family:var(--font-display);font-weight:400;font-size:clamp(48px,6vw,76px);line-height:1.02;letter-spacing:-0.005em;margin:0 0 12px;}
+.cover-title em{font-family:var(--font-script);font-style:normal;font-weight:400;color:var(--rose);display:block;font-size:0.95em;margin-top:2px;}
+.cover-rule{width:56px;height:1px;background:var(--taupe-deep);margin:36px auto;opacity:0.6;}
+.cover-lede{font-family:var(--font-display);font-weight:400;font-size:20px;font-style:italic;line-height:1.55;color:var(--ink-soft);max-width:540px;margin:0 auto 8px;}
+.cover-meta{display:flex;gap:56px;justify-content:center;margin-top:48px;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-mute);}
+.cover-meta b{display:block;font-family:var(--font-display);font-weight:400;font-style:italic;font-size:22px;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:6px;}
+.cover-cta{display:inline-flex;align-items:center;gap:14px;margin-top:56px;padding:16px 36px;background:var(--ink);color:var(--warm-white);border:none;cursor:pointer;font-family:var(--font-body);font-size:11px;letter-spacing:0.32em;text-transform:uppercase;transition:background 0.2s ease,transform 0.2s ease;}
+.cover-cta:hover{background:#1a1612;transform:translateY(-1px);}
+.cover-corner{position:absolute;font-family:var(--font-body);font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink-mute);}
+.cover-corner.tl{top:32px;left:32px;}
+.cover-corner.br{bottom:32px;right:32px;font-style:italic;text-transform:none;letter-spacing:0;font-family:var(--font-display);font-size:14px;color:var(--rose);}
+
+/* App layout */
+.app{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;min-height:100vh;}
+.side{position:sticky;top:0;align-self:start;height:100vh;background:var(--warm-white);border-right:1px solid var(--line);padding:36px 28px;display:flex;flex-direction:column;overflow-y:auto;}
+.side-brand{font-family:var(--font-display);font-size:22px;line-height:1.1;margin-bottom:4px;}
+.side-brand em{font-family:var(--font-script);font-style:normal;color:var(--rose);display:block;font-size:26px;}
+.side-sub{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:32px;}
+.progress{margin-bottom:28px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px;}
+.progress-bar{height:2px;background:var(--line);position:relative;overflow:hidden;}
+.progress-bar::after{content:"";position:absolute;inset:0;width:var(--p,0%);background:var(--rose);transition:width 0.4s ease;}
+.nav-list{list-style:none;padding:0;margin:0 0 24px;}
+.nav-list li{display:flex;align-items:baseline;gap:12px;padding:10px 4px;cursor:pointer;transition:color 0.2s ease;color:var(--ink-soft);}
+.nav-list li:hover{color:var(--ink);}
+.nav-list li.active{color:var(--ink);}
+.nav-list li.active .num{color:var(--rose);}
+.nav-list .num{font-family:var(--font-display);font-style:italic;font-size:14px;color:var(--ink-mute);min-width:24px;}
+.nav-list .lbl{font-family:var(--font-display);font-size:16px;line-height:1.2;}
+.nav-list .dot{width:5px;height:5px;border-radius:50%;background:var(--taupe);margin-left:auto;opacity:0;transition:opacity 0.2s;}
+.nav-list li.complete .dot{opacity:1;background:var(--rose);}
+.side-foot{margin-top:auto;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-mute);line-height:1.5;}
+.save{display:flex;align-items:center;gap:8px;font-style:italic;font-family:var(--font-display);font-size:13px;color:var(--ink-soft);}
+.save-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);animation:pulse-dot 2.4s ease-out infinite;}
+@keyframes pulse-dot{0%{box-shadow:0 0 0 0 rgba(200,167,161,0.5);}70%{box-shadow:0 0 0 8px rgba(200,167,161,0);}100%{box-shadow:0 0 0 0 rgba(200,167,161,0);}}
+
+/* Main */
+.main{padding:80px 80px 160px;max-width:920px;}
+.section-eyebrow{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 18px;}
+.section-eyebrow .eline{flex:0 0 36px;height:1px;background:var(--taupe-deep);opacity:0.5;}
+.section-title{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,4.4vw,60px);line-height:1.04;letter-spacing:-0.005em;margin:0 0 8px;}
+.section-title em{font-family:var(--font-script);font-style:normal;color:var(--rose);}
+.section-desc{font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink-soft);max-width:620px;margin:0 0 56px;}
+.sec-head{display:flex;gap:56px;margin-bottom:64px;align-items:flex-end;}
+.sec-head .left{flex:1;}
+.sec-head .right{flex:0 0 200px;}
+.sec-img{width:100%;aspect-ratio:3/4;background:var(--blush);position:relative;overflow:hidden;}
+.sec-img::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(214,164,154,0.4),rgba(200,167,161,0.2) 60%,rgba(212,196,181,0.3));}
+.sec-img::after{content:attr(data-tag);position:absolute;bottom:12px;left:14px;font-family:monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-white);opacity:0.85;}
+.sec-stripes{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 8px,rgba(255,255,255,0.18) 8px 9px);}
+
+/* Questions */
+.q{margin-bottom:56px;}
+.q-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px;}
+.q-num{font-family:var(--font-display);font-style:italic;font-size:28px;color:var(--rose);line-height:1;min-width:36px;}
+.q-text{font-family:var(--font-display);font-size:24px;line-height:1.32;font-weight:400;margin:0;color:var(--ink);}
+.q-hint{margin:6px 0 0 52px;font-size:13px;color:var(--ink-mute);font-style:italic;font-family:var(--font-display);line-height:1.5;}
+.q-body{margin-left:52px;}
+.field{display:flex;flex-direction:column;}
+.field-label{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;}
+.who-dot{width:6px;height:6px;border-radius:50%;}
+.who-her .who-dot{background:var(--rose);}
+.who-him .who-dot{background:var(--taupe-deep);}
+.who-name{font-family:var(--font-display);font-style:italic;font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);}
+.itextarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);padding:10px 0 12px;font-family:var(--font-display);font-size:18px;color:var(--ink);resize:none;outline:none;transition:border-color 0.2s ease;font-style:italic;min-height:90px;line-height:1.55;}
+.itextarea::placeholder{color:var(--ink-mute);font-style:italic;opacity:0.6;}
+.itextarea:focus{border-bottom-color:var(--rose);}
+.itextarea.full{background:var(--warm-white);border:1px solid var(--line);border-radius:2px;padding:14px 16px;font-size:17px;font-family:var(--font-body);font-style:normal;min-height:110px;}
+.itextarea.full:focus{border-color:var(--rose);background:#FFFCF8;}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:8px 18px;border:1px solid var(--line);background:var(--warm-white);border-radius:999px;font-family:var(--font-body);font-size:13px;color:var(--ink-soft);cursor:pointer;transition:all 0.2s ease;}
+.chip:hover{border-color:var(--rose);}
+.chip.on{background:var(--rose);color:var(--warm-white);border-color:var(--rose);}
+.foot-nav{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+.btn{font-family:var(--font-body);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;border:none;background:transparent;cursor:pointer;padding:14px 0;color:var(--ink-soft);display:inline-flex;align-items:center;gap:12px;transition:color 0.2s ease,gap 0.2s ease;}
+.btn:hover{color:var(--ink);gap:16px;}
+.btn.primary{padding:16px 36px;background:var(--ink);color:var(--warm-white);}
+.btn.primary:hover{background:#1a1612;gap:12px;}
+.btn.ghost{padding:16px 28px;border:1px solid var(--taupe-deep);color:var(--ink);}
+.btn.ghost:hover{background:var(--cream);}
+.btn[disabled]{opacity:0.3;pointer-events:none;}
+
+/* Intro block */
+.intro-quote{margin:36px 0 0;padding:32px 36px;background:var(--warm-white);border-left:2px solid var(--rose);font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink-soft);}
+.tips{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;margin-top:48px;}
+.tip-num{font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--rose);line-height:1;}
+.tip-title{font-family:var(--font-display);font-size:19px;margin:6px 0 6px;color:var(--ink);}
+.tip-body{font-size:13px;color:var(--ink-soft);line-height:1.55;}
+.optional-note{padding:28px 32px;background:var(--warm-white);border-left:2px solid var(--blush);font-family:var(--font-display);font-style:italic;font-size:17px;line-height:1.6;color:var(--ink-soft);margin-bottom:40px;}
+
+/* Generate / Result */
+.gen-wrap{text-align:center;padding:80px 24px;}
+.gen-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);line-height:1.05;margin:0 0 8px;font-weight:400;}
+.gen-title em{font-family:var(--font-script);font-style:normal;color:var(--rose);}
+.gen-desc{font-family:var(--font-display);font-style:italic;font-size:20px;color:var(--ink-soft);max-width:520px;margin:16px auto 0;}
+.loading-anim{font-family:var(--font-script);font-size:64px;color:var(--blush);margin-bottom:1.5rem;animation:breath 2s infinite;}
+@keyframes breath{0%,100%{opacity:0.3;transform:scale(0.97);}50%{opacity:1;transform:scale(1.02);}}
+.result-block{margin-bottom:48px;text-align:left;}
+.result-label{display:flex;align-items:center;gap:16px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:20px;}
+.result-label::after{content:"";flex:1;height:1px;background:var(--line);}
+.result-text{background:var(--warm-white);border:1px solid var(--line-soft);padding:36px 40px;font-family:var(--font-display);font-size:19px;line-height:1.85;color:var(--ink);white-space:pre-wrap;border-left:2px solid var(--rose);}
+.result-actions{display:flex;gap:16px;justify-content:center;margin-top:48px;flex-wrap:wrap;}
+
+/* Fade */
+.fade-in{animation:fade 0.45s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* Responsive */
+@media(max-width:960px){
+  .app{grid-template-columns:1fr;}
+  .side{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line);}
+  .main{padding:48px 28px 100px;}
+  .duo{grid-template-columns:1fr;}
+  .sec-head{flex-direction:column-reverse;align-items:stretch;}
+  .sec-head .right{flex:0 0 auto;max-width:180px;}
+  .q-body{margin-left:0;}
+  .q-hint{margin-left:0;}
+  .cover-card{padding:56px 28px;}
+  .cover-meta{gap:28px;flex-wrap:wrap;}
+}
+@media print{
+  .side,.cover,.foot-nav,.result-actions{display:none!important;}
+  .main{padding:0;}
+  .result-text{border:none;background:white;box-shadow:none;}
+}
+
+.sum-table { width:100%; border-collapse:collapse; margin-bottom:2rem; }
+.sum-q { font-family:var(--font-display); font-size:15px; color:var(--ink-mute); padding:16px 20px 16px 0; width:35%; vertical-align:top; border-bottom:1px solid var(--line); }
+.sum-a { font-family:var(--font-display); font-size:17px; color:var(--ink); padding:16px 0; vertical-align:top; border-bottom:1px solid var(--line); line-height:1.6; }
+.sum-a em { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mute); font-style:normal; }
+@media print { .side, .cover, .foot-nav, .result-actions, .section-eyebrow { display:none!important; } .main { padding:0; } .sum-table { font-size:12px; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover" id="coverScreen">
+  <div class="cover-card">
+    <span class="cover-corner tl">Dire oui autrement</span>
+    <span class="cover-corner br">votre histoire, vos mots</span>
+    <p class="cover-eyebrow">Questionnaire de cérémonie</p>
+    <h1 class="cover-title">Votre histoire,<em>vos mots</em></h1>
+    <div class="cover-rule"></div>
+    <p class="cover-lede">Un questionnaire à compléter à deux, doucement, pour écrire la cérémonie qui vous ressemble vraiment.</p>
+    <div class="cover-meta">
+      <div><span>Sections</span><b>8 chapitres</b></div>
+      <div><span>Durée estimée</span><b>2 à 3 heures</b></div>
+      <div><span>À compléter</span><b>à deux mains</b></div>
+    </div>
+    <button class="cover-cta" onclick="startApp()">Commencer <span class="arrow">→</span></button>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="appScreen" style="display:none;">
+  <aside class="side">
+    <div class="side-brand">Votre<em>cérémonie</em></div>
+    <div class="side-sub">Dire oui autrement</div>
+    <div class="progress">
+      <div class="progress-label">
+        <span id="progLabel">Progression</span>
+        <span id="progPct">0 %</span>
+      </div>
+      <div class="progress-bar" id="progBar" style="--p:0%"></div>
+    </div>
+    <ul class="nav-list" id="navList"></ul>
+    <div class="side-foot">
+      <div class="save"><div class="save-dot"></div>Réponses sauvegardées automatiquement</div>
+    </div>
+  </aside>
+  <main class="main" id="mainContent"></main>
+</div>
+
+<script>
+const SECTIONS = [
+  {
+    id:'intro', nav:'Avant de commencer', eyebrow:'Avant de commencer',
+    title:'Un mot <em>pour vous deux</em>',
+    desc:'Prenez ce questionnaire comme une conversation, pas comme un examen.',
+    isIntro:true,
+    questions:[{kind:'intro'}]
+  },
+  {
+    id:'rencontre', nav:'Votre rencontre', eyebrow:'Section un',
+    title:'Votre <em>rencontre</em>',
+    desc:'Le moment où tout a commencé.',
+    image:'Lieu de la rencontre',
+    questions:[
+      {kind:'textarea', text:'Où, quand et comment vous êtes-vous rencontrés ?', hint:'Racontez la scène : le lieu, l\'ambiance, qui a parlé en premier.', ph:'C\'était un soir de…', rows:6},
+      {kind:'duo', text:'Quelle a été votre toute première impression de l\'autre ?', hint:'Et était-elle juste ?', ph1:'Quand je l\'ai vu pour la première fois…', ph2:'La première fois que je l\'ai vue…'},
+      {kind:'textarea', text:'Un détail de ce premier moment dont vous vous souvenez encore précisément ?', hint:'Un vêtement, une phrase, une musique, une odeur.', ph:'Je me souviens encore de…', rows:4},
+      {kind:'duo', text:'Si quelqu\'un vous avait dit ce jour-là que vous alliez vous marier, qu\'auriez-vous répondu ?', ph1:'Je crois que j\'aurais…', ph2:'J\'aurais sans doute…'},
+    ]
+  },
+  {
+    id:'declic', nav:'Le moment où vous avez su', eyebrow:'Section deux',
+    title:'Le moment où <em>vous avez su</em>',
+    desc:'Le cœur de votre histoire — souvent, la plus belle phrase vient d\'ici.',
+    image:'L\'instant du déclic',
+    questions:[
+      {kind:'duo', text:'À quel moment avez-vous compris que c\'était sérieux ?', ph1:'C\'est quand j\'ai compris que…', ph2:'Je me suis rendu compte que…'},
+      {kind:'duo', text:'Y a-t-il eu un instant précis où vous vous êtes dit « je veux cette personne dans ma vie » ?', hint:'Pas forcément romantique, parfois tout simple.', ph1:'Il y a eu ce moment où…', ph2:'Un soir, je me souviens…'},
+      {kind:'duo', text:'Qu\'est-ce que l\'autre a fait, un jour, qui vous a fait l\'aimer encore plus ?', ph1:'Une fois, elle a…', ph2:'Il a fait quelque chose de…'},
+    ]
+  },
+  {
+    id:'quotidien', nav:'Votre quotidien à deux', eyebrow:'Section trois',
+    title:'Votre quotidien <em>à deux</em>',
+    desc:'Les détails tendres qui feront dire « c\'est tellement eux ».',
+    image:'Moment du quotidien',
+    questions:[
+      {kind:'duo', text:'Décrivez-vous en trois mots. Puis décrivez l\'autre en trois mots.', hint:'Pas besoin d\'expliquer — les trois mots se suffisent.', ph1:'Moi : …', ph2:'Moi : …'},
+      {kind:'duo', text:'La petite habitude de l\'autre qui vous agace tendrement ?', ph1:'Ce qui m\'agace (un peu)…', ph2:'Ce qui m\'agace (un peu)…'},
+      {kind:'textarea', text:'Qu\'est-ce qui vous fait rire tous les deux ?', hint:'Une blague, une expression, un surnom qui n\'appartient qu\'à vous.', ph:'On rit toujours quand…', rows:4},
+      {kind:'textarea', text:'Un dimanche parfait à deux, ça ressemble à quoi ?', ph:'Le dimanche idéal, c\'est…', rows:4},
+    ]
+  },
+  {
+    id:'epreuves', nav:'Les épreuves traversées', eyebrow:'Section quatre — Facultatif',
+    title:'Les épreuves <em>traversées</em>',
+    desc:'Ce que vous avez surmonté ensemble.',
+    optional:true,
+    image:'Ce qui vous a soudés',
+    questions:[
+      {kind:'textarea', text:'Avez-vous traversé une difficulté qui vous a rapprochés plutôt que séparés ?', ph:'Il y a eu cette période où…', rows:5},
+      {kind:'textarea', text:'Qu\'avez-vous appris l\'un sur l\'autre dans les moments moins faciles ?', ph:'J\'ai découvert que…', rows:5},
+    ]
+  },
+  {
+    id:'valeurs', nav:'Ce qui vous unit', eyebrow:'Section cinq',
+    title:'Ce qui <em>vous unit</em>',
+    desc:'Le « pourquoi » de votre engagement.',
+    image:'Vos valeurs partagées',
+    questions:[
+      {kind:'textarea', text:'Quelles valeurs partagez-vous, qui font que vous avancez dans la même direction ?', hint:'Liberté, fidélité, humour, famille, courage, douceur… à vous.', ph:'Ce qui nous unit, c\'est…', rows:4},
+      {kind:'duo', text:'Qu\'est-ce que l\'autre vous a appris, ou comment vous a-t-il rendu meilleur(e) ?', ph1:'Il / elle m\'a appris à…', ph2:'Il / elle m\'a appris à…'},
+      {kind:'duo', text:'Qu\'admirez-vous chez l\'autre que vous aimeriez dire à voix haute, devant tout le monde ?', ph1:'Ce que j\'admire…', ph2:'Ce que j\'admire…'},
+    ]
+  },
+  {
+    id:'avenir', nav:'Votre vision de l\'avenir', eyebrow:'Section six',
+    title:'Votre vision <em>de l\'avenir</em>',
+    desc:'La promesse, la projection, le rêve à venir.',
+    image:'Ce qui vient ensuite',
+    questions:[
+      {kind:'duo', text:'Quand vous imaginez votre vie dans dix ans, qu\'est-ce que vous voyez ?', ph1:'Dans dix ans, je nous vois…', ph2:'Dans dix ans, je nous vois…'},
+      {kind:'duo', text:'Quelle promesse, simple et vraie, voulez-vous faire à l\'autre ce jour-là ?', ph1:'Je te promets de…', ph2:'Je te promets de…'},
+      {kind:'textarea', text:'Y a-t-il un rêve, un projet, que ce mariage scelle ou lance ?', ph:'Ce mariage, c\'est aussi le début de…', rows:4},
+    ]
+  },
+  {
+    id:'ton', nav:'Le ton & l\'ambiance', eyebrow:'Section sept',
+    title:'Le ton & <em>l\'ambiance</em>',
+    desc:'La couleur que vous voulez donner à votre cérémonie.',
+    questions:[
+      {kind:'chips', text:'Quel(s) ton(s) voulez-vous pour votre cérémonie ?', hint:'Plusieurs choix possibles.', options:['Solennel & émouvant','Tendre & intime','Drôle & léger','Poétique','Spontané & naturel']},
+      {kind:'textarea', text:'Y a-t-il quelque chose que vous voulez absolument éviter ?', hint:'Trop religieux, trop niais, trop long, allusions à des ex…', ph:'On ne veut surtout pas…', rows:3},
+      {kind:'textarea', text:'Combien de temps souhaitez-vous que la cérémonie dure ?', hint:'L\'usage se situe entre 20 et 40 minutes.', ph:'Environ… minutes', rows:2},
+    ]
+  },
+  {
+    id:'pratique', nav:'Les éléments pratiques', eyebrow:'Section huit',
+    title:'Les éléments <em>pratiques</em>',
+    desc:'Tout ce qui ancre votre cérémonie dans le concret.',
+    questions:[
+      {kind:'textarea', text:'Qui officie ?', hint:'Un proche, un duo, un officiant professionnel.', ph:'Notre officiant(e), c\'est…', rows:3},
+      {kind:'textarea', text:'Avez-vous une idée de rituel symbolique qui vous attire ?', hint:'Rubans, sable, arbre, pierres, bougies, capsule temporelle, vin et lettres.', ph:'On pense au rituel…', rows:3},
+      {kind:'textarea', text:'Des musiques qui comptent pour vous, à intégrer à des moments clés ?', hint:'Entrée, sortie, échange des vœux, signature, lecture.', ph:'Entrée : …  Sortie : …', rows:4},
+    ]
+  },
+];
+
+const TONES_KEY = 'tones';
+let answers = JSON.parse(localStorage.getItem('doa_answers') || '{}');
+let selectedTones = JSON.parse(localStorage.getItem('doa_tones') || '[]');
+let current = 0;
+
+function save() {
+  localStorage.setItem('doa_answers', JSON.stringify(answers));
+  localStorage.setItem('doa_tones', JSON.stringify(selectedTones));
+}
+
+function startApp() {
+  document.getElementById('coverScreen').style.display = 'none';
+  document.getElementById('appScreen').style.display = 'grid';
+  buildNav();
+  renderSection(0);
+}
+
+function buildNav() {
+  const ul = document.getElementById('navList');
+  ul.innerHTML = SECTIONS.map((s,i) => `
+    <li id="nav${i}" onclick="goTo(${i})">
+      <span class="num">${i+1}.</span>
+      <span class="lbl">${s.nav}</span>
+      <span class="dot"></span>
+    </li>`).join('');
+}
+
+function updateNav() {
+  SECTIONS.forEach((s,i) => {
+    const li = document.getElementById('nav'+i);
+    if (!li) return;
+    li.className = i === current ? 'active' : (hasAnswers(i) ? 'complete' : '');
+  });
+  const pct = Math.round((current / (SECTIONS.length - 1)) * 100);
+  document.getElementById('progBar').style.setProperty('--p', pct + '%');
+  document.getElementById('progPct').textContent = pct + ' %';
+  document.getElementById('progLabel').textContent = 'Section ' + (current+1) + ' / ' + SECTIONS.length;
+}
+
+function hasAnswers(idx) {
+  const sec = SECTIONS[idx];
+  return sec.questions.some(q => {
+    if (q.kind === 'intro') return false;
+    if (q.kind === 'chips') return selectedTones.length > 0;
+    if (q.kind === 'duo') {
+      return (answers[sec.id+'_'+q.text.slice(0,15)+'_1'] || '').trim() ||
+             (answers[sec.id+'_'+q.text.slice(0,15)+'_2'] || '').trim();
+    }
+    return (answers[sec.id+'_'+q.text.slice(0,20)] || '').trim();
+  });
+}
+
+function key(secId, qText, suffix) {
+  return secId + '_' + qText.slice(0,20) + (suffix||'');
+}
+
+function goTo(idx) {
+  current = idx;
+  renderSection(idx);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderSection(idx) {
+  updateNav();
+  const sec = SECTIONS[idx];
+  const isLast = idx === SECTIONS.length - 1;
+  const content = document.getElementById('mainContent');
+
+  let html = '<div class="fade-in">';
+
+  if (sec.isIntro) {
+    html += `
+      <div class="section-eyebrow"><span class="eline"></span>${sec.eyebrow}</div>
+      <h2 class="section-title">${sec.title}</h2>
+      <p class="section-desc">${sec.desc}</p>
+      <div class="intro-quote">
+        Répondez chacun de votre côté pour les questions personnelles, puis comparez :
+        les différences sont souvent les plus beaux moments de la cérémonie.
+        Ne cherchez pas les phrases parfaites — notez les souvenirs, les images, les détails.
+        <em>La justesse viendra après.</em>
+      </div>
+      <div class="tips">
+        <div><div class="tip-num">01</div><div class="tip-title">Séparément, puis ensemble</div><div class="tip-body">Les questions « Elle / Lui » se remplissent individuellement. Vous comparerez après.</div></div>
+        <div><div class="tip-num">02</div><div class="tip-title">Notez tout, triez après</div><div class="tip-body">Une image floue, un mot, un détail — gardez-les. On rédigera ensuite à partir de cette matière brute.</div></div>
+        <div><div class="tip-num">03</div><div class="tip-title">Le bon décor</div><div class="tip-body">Comptez deux à trois heures, idéalement réparties sur quelques soirées.</div></div>
+        <div><div class="tip-num">04</div><div class="tip-title">Prenez votre temps</div><div class="tip-body">Ce questionnaire se remplit en plusieurs fois, à votre rythme.</div></div>
+      </div>`;
+  } else {
+    const hasImg = sec.image;
+    html += `<div class="sec-head">
+      <div class="left">
+        <div class="section-eyebrow"><span class="eline"></span>${sec.eyebrow}</div>
+        <h2 class="section-title">${sec.title}</h2>
+        <p class="section-desc">${sec.desc}</p>
+      </div>
+      ${hasImg ? `<div class="right"><div class="sec-img" data-tag="${sec.image}"><div class="sec-stripes"></div></div></div>` : ''}
+    </div>`;
+
+    if (sec.optional) {
+      html += `<div class="optional-note">Cette section est entièrement facultative. Mais une cérémonie qui évoque, avec pudeur, ce qu'un couple a surmonté ensemble touche souvent plus fort qu'une histoire sans nuage. Répondez seulement si cela vous ressemble.</div>`;
+    }
+
+    sec.questions.forEach((q, qi) => {
+      const k = key(sec.id, q.text||'chips');
+      html += `<div class="q">
+        <div class="q-head"><span class="q-num">${String(qi+1).padStart(2,'0')}</span><p class="q-text">${q.text||'Ton de cérémonie'}</p></div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        <div class="q-body">`;
+
+      if (q.kind === 'textarea') {
+        const v = (answers[k]||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+        html += `<textarea class="itextarea full" rows="${q.rows||4}" placeholder="${q.ph||''}" oninput="answers['${k}']=this.value;save()">${answers[k]||''}</textarea>`;
+      } else if (q.kind === 'duo') {
+        const k1=k+'_1', k2=k+'_2';
+        html += `<div class="duo">
+          <div class="field who-her"><div class="field-label"><span class="who-dot"></span><span class="who-name">Elle</span></div>
+            <textarea class="itextarea" placeholder="${q.ph1||''}" oninput="answers['${k1}']=this.value;save()">${answers[k1]||''}</textarea></div>
+          <div class="field who-him"><div class="field-label"><span class="who-dot"></span><span class="who-name">Lui</span></div>
+            <textarea class="itextarea" placeholder="${q.ph2||''}" oninput="answers['${k2}']=this.value;save()">${answers[k2]||''}</textarea></div>
+        </div>`;
+      } else if (q.kind === 'chips') {
+        html += `<div class="chips">` + q.options.map(o =>
+          `<div class="chip${selectedTones.includes(o)?' on':''}" onclick="toggleTone('${o}',this)">${o}</div>`
+        ).join('') + `</div>`;
+      }
+      html += `</div></div>`;
+    });
+  }
+
+  html += `<div class="foot-nav">`;
+  if (idx > 0) {
+    html += `<button class="btn ghost" onclick="goTo(${idx-1})">← Retour</button>`;
+  } else { html += `<span></span>`; }
+
+  if (isLast) {
+    html += `<button class="btn primary" onclick="showSummary()">Voir mon récapitulatif →</button>`;
+  } else {
+    html += `<button class="btn primary" onclick="goTo(${idx+1})">Suivant →</button>`;
+  }
+  html += `</div></div>`;
+
+  content.innerHTML = html;
+  updateNav();
+}
+
+function toggleTone(t, el) {
+  if (selectedTones.includes(t)) {
+    selectedTones = selectedTones.filter(x=>x!==t);
+    el.classList.remove('on');
+  } else {
+    selectedTones.push(t);
+    el.classList.add('on');
+  }
+  save();
+}
+
+function getAnswerSummary() {
+  const a = answers;
+  const get = (id, q, suf) => (a[key(id,q,suf)]||'').trim() || 'non renseigné';
+  return `
+Rencontre : ${get('rencontre','Où, quand et comment')}
+1ère impression (Elle) : ${get('rencontre','Quelle a été votre to','_1')}
+1ère impression (Lui) : ${get('rencontre','Quelle a été votre to','_2')}
+Détail mémorisé : ${get('rencontre','Un détail de ce premi')}
+Moment du déclic (Elle) : ${get('declic','Y a-t-il eu un instan','_1')}
+Moment du déclic (Lui) : ${get('declic','Y a-t-il eu un instan','_2')}
+Ce qui fait aimer encore + (Elle) : ${get('declic','Qu\'est-ce que l\'autre','_1')}
+Ce qui fait aimer encore + (Lui) : ${get('declic','Qu\'est-ce que l\'autre','_2')}
+Se décrire (Elle) : ${get('quotidien','Décrivez-vous en troi','_1')}
+Se décrire (Lui) : ${get('quotidien','Décrivez-vous en troi','_2')}
+Habitude agaçante (Elle) : ${get('quotidien','La petite habitude de','_1')}
+Habitude agaçante (Lui) : ${get('quotidien','La petite habitude de','_2')}
+Ce qui fait rire : ${get('quotidien','Qu\'est-ce qui vous fa')}
+Dimanche parfait : ${get('quotidien','Un dimanche parfait à')}
+Épreuves : ${get('epreuves','Avez-vous traversé un')}
+Valeurs : ${get('valeurs','Quelles valeurs partagez')}
+Admiration (Elle) : ${get('valeurs','Qu\'admirez-vous chez ','_1')}
+Admiration (Lui) : ${get('valeurs','Qu\'admirez-vous chez ','_2')}
+Vision dans 10 ans (Elle) : ${get('avenir','Quand vous imaginez v','_1')}
+Vision dans 10 ans (Lui) : ${get('avenir','Quand vous imaginez v','_2')}
+Promesse (Elle) : ${get('avenir','Quelle promesse, simpl','_1')}
+Promesse (Lui) : ${get('avenir','Quelle promesse, simpl','_2')}
+Rêve / projet : ${get('avenir','Y a-t-il un rêve, un ')}
+Ton souhaité : ${selectedTones.join(', ') || 'non renseigné'}
+À éviter : ${get('ton','Y a-t-il quelque chos')}`;
+}
+
+async function generateCeremony() {
+  const content = document.getElementById('mainContent');
+  content.innerHTML = `<div class="gen-wrap fade-in">
+    <div class="loading-anim">&amp;</div>
+    <h2 class="gen-title">Composition en <em>cours…</em></h2>
+    <p class="gen-desc">L'IA tisse votre cérémonie à partir de vos réponses.</p>
+  </div>`;
+
+  const prompt = `Tu es expert en rédaction de cérémonies laïques françaises pour le kit "Dire Oui Autrement".
+À partir des réponses du couple ci-dessous, génère une trame de cérémonie complète et personnalisée.
+Style : direct, légèrement littéraire, jamais pompeux, jamais new age. Utilise [crochets] pour les passages restant à personnaliser.
+
+${getAnswerSummary()}
+
+Réponds UNIQUEMENT en JSON valide strict, sans markdown ni backticks :
+{"accueil":"mot d'accueil 150 mots","histoire":"histoire du couple 400 mots personnalisée","voeux":"trame de voeux 200 mots avec crochets","declaration":"déclaration d'union 80 mots forte et conclusive"}`;
+
+  try {
+    const res = await fetch('/.netlify/functions/generate', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        messages:[{role:'user', content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = (data.content||[]).map(b=>b.text||'').join('');
+    const clean = text.replace(/```json|```/g,'').trim();
+    const ceremony = JSON.parse(clean);
+    renderResult(ceremony);
+  } catch(e) {
+    content.innerHTML = `<div class="gen-wrap fade-in">
+      <p style="color:var(--ink-soft);font-family:var(--font-display);font-style:italic;font-size:18px;margin-bottom:2rem;">Une erreur s'est produite. Vos réponses sont bien sauvegardées.</p>
+      <button class="btn primary" onclick="generateCeremony()">Réessayer →</button>
+      <button class="btn ghost" onclick="goTo(${SECTIONS.length-1})" style="margin-left:16px">Retour</button>
+    </div>`;
+  }
+}
+
+function renderResult(ceremony) {
+  const parts = [
+    {label:'Mot d\'accueil', key:'accueil'},
+    {label:'Histoire du couple', key:'histoire'},
+    {label:'Échange des vœux', key:'voeux'},
+    {label:'Déclaration d\'union', key:'declaration'},
+  ];
+  const content = document.getElementById('mainContent');
+  let html = `<div class="fade-in">
+    <div class="section-eyebrow"><span class="eline"></span>Votre trame générée</div>
+    <h2 class="section-title">Votre <em>cérémonie</em></h2>
+    <p class="section-desc">Personnalisez les passages entre [crochets] avant de transmettre à votre officiant.</p>`;
+
+  parts.forEach(p => {
+    if (ceremony[p.key]) {
+      html += `<div class="result-block">
+        <div class="result-label">${p.label}</div>
+        <div class="result-text">${ceremony[p.key]}</div>
+      </div>`;
+    }
+  });
+
+  html += `<div class="result-actions">
+    <button class="btn primary" onclick="window.print()">Imprimer / Sauvegarder en PDF →</button>
+    <button class="btn ghost" onclick="goTo(${SECTIONS.length-1})">← Modifier les réponses</button>
+  </div></div>`;
+
+  content.innerHTML = html;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showSummary() {
+  const mc = document.getElementById('mainContent');
+
+  let rows = '';
+  SECTIONS.forEach(sec => {
+    if (sec.isIntro) return;
+    sec.questions.forEach(q => {
+      if (q.kind === 'chips') {
+        if (selectedTones.length) rows += '<tr><td class="sum-q">' + (q.text||'Ton') + '</td><td class="sum-a">' + selectedTones.join(', ') + '</td></tr>';
+      } else if (q.kind === 'duo') {
+        const k = key(sec.id, q.text||'');
+        const v1 = (answers[k+'_1']||'').trim();
+        const v2 = (answers[k+'_2']||'').trim();
+        if (v1||v2) rows += '<tr><td class="sum-q">' + q.text + '</td><td class="sum-a"><em>Elle :</em> ' + (v1||'—') + '<br><em>Lui :</em> ' + (v2||'—') + '</td></tr>';
+      } else {
+        const k = key(sec.id, q.text||'');
+        const v = (answers[k]||'').trim();
+        if (v) rows += '<tr><td class="sum-q">' + q.text + '</td><td class="sum-a">' + v + '</td></tr>';
+      }
+    });
+  });
+
+  mc.innerHTML = '<div class="fade-in">' +
+    '<div class="section-eyebrow"><span class="eline"></span>Récapitulatif</div>' +
+    '<h2 class="section-title">Vos <em>réponses</em></h2>' +
+    '<p class="section-desc">Toutes vos réponses en un coup d'œil. Imprimez cette page et transmettez-la à votre officiant.</p>' +
+    '<table class="sum-table">' + (rows || '<tr><td colspan="2" style="color:var(--ink-mute);font-style:italic;padding:2rem 0;">Aucune réponse renseignée.</td></tr>') + '</table>' +
+    '<div class="result-actions">' +
+    '<button class="btn primary" onclick="window.print()">Imprimer / Sauvegarder en PDF →</button>' +
+    '<button class="btn ghost" onclick="goTo(0)" style="margin-left:16px">← Recommencer</button>' +
+    '</div></div>';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

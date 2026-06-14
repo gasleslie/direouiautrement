@@ -1,0 +1,3 @@
+[build]
+  publish = "direouiautrement"
+  functions = "direouiautrement/netlify/functions"
