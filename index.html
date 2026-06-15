@@ -165,12 +165,6 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;bac
   .main{padding:0;}
   .result-text{border:none;background:white;box-shadow:none;}
 }
-
-.sum-table { width:100%; border-collapse:collapse; margin-bottom:2rem; }
-.sum-q { font-family:var(--font-display); font-size:15px; color:var(--ink-mute); padding:16px 20px 16px 0; width:35%; vertical-align:top; border-bottom:1px solid var(--line); }
-.sum-a { font-family:var(--font-display); font-size:17px; color:var(--ink); padding:16px 0; vertical-align:top; border-bottom:1px solid var(--line); line-height:1.6; }
-.sum-a em { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mute); font-style:normal; }
-@media print { .side, .cover, .foot-nav, .result-actions, .section-eyebrow { display:none!important; } .main { padding:0; } .sum-table { font-size:12px; } }
 </style>
 </head>
 <body>
@@ -447,7 +441,7 @@ function renderSection(idx) {
   } else { html += `<span></span>`; }
 
   if (isLast) {
-    html += `<button class="btn primary" onclick="showSummary()">Voir mon récapitulatif →</button>`;
+    html += `<button class="btn primary" onclick="generateCeremony()">Générer ma trame →</button>`;
   } else {
     html += `<button class="btn primary" onclick="goTo(${idx+1})">Suivant →</button>`;
   }
@@ -514,7 +508,7 @@ Style : direct, légèrement littéraire, jamais pompeux, jamais new age. Utilis
 ${getAnswerSummary()}
 
 Réponds UNIQUEMENT en JSON valide strict, sans markdown ni backticks :
-{"accueil":"mot d'accueil 150 mots","histoire":"histoire du couple 400 mots personnalisée","voeux":"trame de voeux 200 mots avec crochets","declaration":"déclaration d'union 80 mots forte et conclusive"}`;
+{"accueil":"mot daccueil 150 mots","histoire":"histoire du couple 400 mots personnalisee","voeux":"trame de voeux 200 mots avec crochets","declaration":"declaration dunion 80 mots forte et conclusive","rituel":"transition vers le rituel symbolique 80 mots, introduit le rituel choisi avec son sens, utilise [nom du rituel] si non precise","lecture":"introduction dune lecture par un proche 60 mots, avec [prenom] et [lien avec le couple] entre crochets","cloture":"mot de cloture 80 mots, conclut la ceremonie avant la sortie des maries, chaleureux et memorable"}`;
 
   try {
     const res = await fetch('/.netlify/functions/generate', {
@@ -544,6 +538,9 @@ function renderResult(ceremony) {
     {label:'Histoire du couple', key:'histoire'},
     {label:'Échange des vœux', key:'voeux'},
     {label:'Déclaration d\'union', key:'declaration'},
+    {label:'Transition vers le rituel', key:'rituel'},
+    {label:'Introduction d\'une lecture', key:'lecture'},
+    {label:'Mot de clôture', key:'cloture'},
   ];
   const content = document.getElementById('mainContent');
   let html = `<div class="fade-in">
@@ -566,40 +563,6 @@ function renderResult(ceremony) {
   </div></div>`;
 
   content.innerHTML = html;
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-function showSummary() {
-  const mc = document.getElementById('mainContent');
-
-  let rows = '';
-  SECTIONS.forEach(sec => {
-    if (sec.isIntro) return;
-    sec.questions.forEach(q => {
-      if (q.kind === 'chips') {
-        if (selectedTones.length) rows += '<tr><td class="sum-q">' + (q.text||'Ton') + '</td><td class="sum-a">' + selectedTones.join(', ') + '</td></tr>';
-      } else if (q.kind === 'duo') {
-        const k = key(sec.id, q.text||'');
-        const v1 = (answers[k+'_1']||'').trim();
-        const v2 = (answers[k+'_2']||'').trim();
-        if (v1||v2) rows += '<tr><td class="sum-q">' + q.text + '</td><td class="sum-a"><em>Elle :</em> ' + (v1||'—') + '<br><em>Lui :</em> ' + (v2||'—') + '</td></tr>';
-      } else {
-        const k = key(sec.id, q.text||'');
-        const v = (answers[k]||'').trim();
-        if (v) rows += '<tr><td class="sum-q">' + q.text + '</td><td class="sum-a">' + v + '</td></tr>';
-      }
-    });
-  });
-
-  mc.innerHTML = '<div class="fade-in">' +
-    '<div class="section-eyebrow"><span class="eline"></span>Récapitulatif</div>' +
-    '<h2 class="section-title">Vos <em>réponses</em></h2>' +
-    '<p class="section-desc">Toutes vos réponses en un coup d'œil. Imprimez cette page et transmettez-la à votre officiant.</p>' +
-    '<table class="sum-table">' + (rows || '<tr><td colspan="2" style="color:var(--ink-mute);font-style:italic;padding:2rem 0;">Aucune réponse renseignée.</td></tr>') + '</table>' +
-    '<div class="result-actions">' +
-    '<button class="btn primary" onclick="window.print()">Imprimer / Sauvegarder en PDF →</button>' +
-    '<button class="btn ghost" onclick="goTo(0)" style="margin-left:16px">← Recommencer</button>' +
-    '</div></div>';
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
